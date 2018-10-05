@@ -119,9 +119,7 @@ var Location = function (myLocation) {
     // create marker
     // get the title and the position from the local array
     var position = myLocation.location;
-
     var title = myLocation.title;
-
 
     // Create a marker for location
     this.marker = new google.maps.Marker({
@@ -129,7 +127,7 @@ var Location = function (myLocation) {
         map : map,
         title: title,
         icon: defaultIcon, // This is the default ICON from above with the special properties
-        animation: google.maps.Animation.DROP,
+        animation: google.maps.Animation.DROP, //initial animation
         });
 
     // append the marker in the predefined markers array
@@ -156,7 +154,7 @@ var Location = function (myLocation) {
 
     // fit the maps to the bounds does not work here as the
     // bounds are defined based on the last loction.
-    // Need to check how this can work.
+    // Need to check how this can work later.
     //map.fitBounds(bounds);
 }
 
@@ -177,7 +175,6 @@ var ViewModel = function(){
     // Now I want to create my filter
     // first thing is to define my search term
     this.searchterm = ko.observable('');
-
 
     // Now I have to modify my location Array using the filter functions.
     // What I want to display is the filtered list bound in the html.
@@ -334,6 +331,7 @@ function getFSContent(fs_id) {
 }
 
 function toggleBounce(marker) {
+    // Took toogle bounce from the google tutorial
     if (marker.getAnimation() !== null) {
       marker.setAnimation(null);
     } else {

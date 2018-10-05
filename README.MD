@@ -11,12 +11,15 @@ It shows my favorite places where I used to live.
 There are no requirements accept a stable internet connection.
 
 4. Setup instructions
-    4.1 Download or fork the files onto your computer. Leave the structure as it is.
+    4.1 Download or fork the files onto your computer. Leave the file structure as it is.
 
-    4.2 start the file main.html with your browser
+    4.2 Obtain client ID and client secret from foursquare and edit the file script.js in the folder js
+            search for client_id and replace it with your client_id
+                'client_id=XXXXXX'
+            search for client_secret and replace with your client secret
+                'client_secret=XXXXX'
+
+    4.3 start the file main.html with your browser
 
 5. Restriction
-    5.1 The styling could need some polish.
-
-    5.2 Only google is supported right now. As I am in China I will add wechat login
-    in the future.
+    5.1 If you use my foursquare credentials you only can open 50 infowindows per day. So please use your own.
