@@ -1,5 +1,5 @@
 // strict adherence to scoping
-//'use strict'
+'use strict'
 
 // define global variables
 let map;
