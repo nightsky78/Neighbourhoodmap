@@ -4,7 +4,8 @@
 // define global variables
 let map;
 
-// Create a blank array for all the markers.
+// Create a blank array for all the markers as well
+// as some other helpful variables.
 let markers = [];
 let myInfoWindows = [];
 let lastMarker;
@@ -80,11 +81,6 @@ ko.applyBindings(new ViewModel());
 
 }
 
-// Gracefully handle any map error
-var googleMapsError = function()  {
-    alert('An error occurred with Google Maps!');
-}
-
 
 function makeMarkerIcon(markerColor) {
     var markerImage = new google.maps.MarkerImage(
@@ -98,8 +94,6 @@ function makeMarkerIcon(markerColor) {
 }
 
 // This is the object defining the location to be displayed on the map and in list.
-// It is called when filtering the data and each individual location from the filer
-// result is passed.
 var Location = function (myLocation) {
     var that = this;
 
@@ -211,6 +205,7 @@ var ViewModel = function(){
 
 }
 
+
 function closeInfoWindows(){
      for (var i=0;i<myInfoWindows.length;i++) {
           // Close the windows in my array.
@@ -219,6 +214,7 @@ function closeInfoWindows(){
           myInfoWindows[i].marker = null;
        };
 }
+
 
 function populateInfoWindow(fs_id, marker, infowindow) {
     // closing the old Infowindows.

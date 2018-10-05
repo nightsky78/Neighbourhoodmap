@@ -23,3 +23,8 @@ There are no requirements accept a stable internet connection.
 
 5. Restriction
     5.1 If you use my foursquare credentials you only can open 50 infowindows per day. So please use your own.
+
+6. Sources:
+    Code from Udacity course on Knockout and google maps API.
+    Google API documentation (on bouncing markers).
+    Inspiration from: Dustin D'Avignon
