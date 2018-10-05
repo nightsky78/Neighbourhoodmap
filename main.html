@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Neighbourhood Map by Johannes Hettig</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+
+  </head>
+  <body>
+    <div class="container">
+      <header class="container box header">
+        <div class="logo">
+            <img class="logoimg glow" alt="Logo Image" src="Logo.jpg">
+        </div>
+        <div class="text intro">
+            Neighbourhood Map
+        </div>
+      </header>
+      <hr class = "bar glow">
+      <div class="box container">
+            <div class="menue text"  >
+                <input data-bind="value: searchterm, valueUpdate: 'afterkeydown'"/>
+                <ul data-bind="foreach: filteredLocationList">
+                    <li data-bind="text: title, click: $parent.setLocation"></li>
+                </ul>
+            </div>
+            <div class="maparea" id="map">
+                This will be my map
+            </div>
+      </div>
+      </section>
+      <hr class = "bar glow ">
+      <footer class="text footer">Email me: johannes.hettig (at) gmail.com </footer>
+    </div>
+    <script async defer
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQzpz3jn11qbrO52AmJQIKU3cux4-8pFA&v=3&libraries=drawing, geometry&callback=initMap">
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/lib/knockout-3.2.0.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,158 @@
+    @import url(https://fonts.googleapis.com/css?family=Roboto);
+      html, body {
+       background-color: black;
+      }
+
+      #pano {
+        width: 250px;
+        height: 250px;
+        color: black;
+      }
+
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        color: white;
+        margin: 10px;
+      }
+
+      .box {
+        width: 100%;
+        height: 650px;
+      }
+
+      .maparea {
+        margin: 0 auto;
+        width: 70%;
+      }
+
+      .menue {
+        margin: 0 auto;
+        width: 30%;
+      }
+
+
+      .header {
+        max-height : 150px;
+      }
+
+      .footer {
+        height: 50px;
+        width: 100%;
+        text-align: center;
+      }
+
+      .intro {
+        font-size: 40px;
+        line-height: 35px;
+      }
+
+      .text{
+        font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+        font-style: normal;
+        font-variant: small-caps;
+        font-weight: 700;
+      }
+
+      .bar {
+        width : 100%;
+        background-color:#3c9fd6;
+        border: 0 none;
+      }
+
+      .glow {
+        color : #3c9fd6;
+        box-shadow: 0px 0px 5px 2px #3c9fd6;
+      }
+
+      img {
+        max-height: 100%;
+        max-width: 100%;
+      }
+
+      h2 {
+        margin: 5px
+      }
+
+      figure {
+        margin: 10px
+      }
+
+      .project {
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .headline{
+        font-size: 20px;
+        line-height: 28px;
+      }
+
+
+      @media screen and (max-width: 449px) {
+        .box {
+            width : 100%;
+        }
+
+        .logoimg {
+            display: block;
+            margin: 10px;
+            margin-right: auto;
+            max-height: 100px;
+        }
+
+        .logo {
+            width : 100%;
+        }
+
+        .intro {
+            width : 100%;
+         }
+
+        .project {
+            width : 100%;
+            overflow: auto;
+        }
+
+        .tile{
+            max-width: 83%;
+            max-height: 83%;
+            margin : 25px;
+            float: left;
+            clear: both;
+        }
+      }
+
+      @media screen and (min-width: 450px) {
+        .logo {
+            width : 30%;
+            align-content:center;
+        }
+
+        .logoimg {
+            display: block;
+            margin: 10px;
+            margin-left: auto;
+            margin-right: auto;
+            max-height: 100px;
+        }
+
+        .intro {
+            width : 70%;
+            line-height:120px;
+            text-align:right;
+        }
+
+        .project {
+            width : 50%
+        }
+      }
+
+      @media screen and (min-width: 1000px)
+      {
+        .container {
+            width : 990px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+      }
