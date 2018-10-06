@@ -8,7 +8,7 @@ The project was completed as part of my Fullstack Webdeveloper Nanodegree.
 It shows my favorite places where I used to live.
 
 3. Requirements
-There are no requirements accept a stable internet connection.
+There are no requirements except a stable internet connection.
 
 4. Setup instructions
     4.1 Download or fork the files onto your computer. Leave the file structure as it is.
