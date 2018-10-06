@@ -247,7 +247,7 @@ function populateInfoWindow(fs_id, marker, infowindow) {
         // define a radius to place the viewpoint where imagery exists.
         var radius = 50;
 
-        let venue = getFSContent(fs_id);
+
 
         // define the getstreetview function to get the image and add it to the content of the marker.
         function getStreetView(data, status){
@@ -261,11 +261,10 @@ function populateInfoWindow(fs_id, marker, infowindow) {
                     // find the right image and add content
                    // Set content to the streetview image of the location
                 // debug entry
-                infowindow.setContent('<div style="color: black">' + venue[0]
-                                + '</div><div id="pano"></div>'
-                                + '<br><div style="color: black">' + venue[1] + '</div>'
-                                + '<br><a href="' + venue[2] + '" style="color: black">'
-                                + venue[2] + '</a>');
+                infowindow.setContent('<b><div style="color: black" id="name">Loading'
+                                + '</div></b><div id="pano"></div>'
+                                + '<br><div style="color: black" id="address">Loading</div>'
+                                + '<div style="color: black" id="url">Loading</div>');
                 // set panoramaoption
                 // the size is determined by the CSS stile of pano
                 var panoramaOptions = {
@@ -275,11 +274,13 @@ function populateInfoWindow(fs_id, marker, infowindow) {
                     pitch: 10
                 }
                 };
+
                 // create panorama object and put it inside the infowindow at the id of the pano
                 var panorama = new google.maps.StreetViewPanorama(
                     document.getElementById('pano'), panoramaOptions);
+
             } else {
-                infowindow.setContent('<div style="color: red"> No Stree View Found</div>')
+                infowindow.setContent('<div style="color: red"> No Street View Found</div>')
             };
         };
 
@@ -292,26 +293,37 @@ function populateInfoWindow(fs_id, marker, infowindow) {
         myInfoWindows = [infowindow];
         lastMarker = marker;
         infowindow.open(map, marker);
+        getFSContent(fs_id);
 
+        // center the map to the marker when opening the windows (from stackoverflow)
+        var latLng = marker.getPosition(); // returns LatLng object
+        map.setCenter(latLng); // setCenter takes a LatLng object
     }
-
-
 }
 
 
 function getFSContent(fs_id) {
     var text;
-    var response;
     var url = base_url + fs_id + '?' + client_id + '&' + client_secret + '&' + version;
     var response;
 
     $.ajax({ type: "GET",
          url: url,
-         async: false,
+         async: true,
          dataType: 'json',
          success : function(text)
          {
             response = text;
+            document.getElementById('name').innerHTML = response.response.venue.name;
+            document.getElementById('address').innerHTML = response.response.venue.location.formattedAddress;
+            if (!response.response.venue.url){
+                response.response.venue.url = 'Website not available!';
+                }
+            document.getElementById('url').innerHTML = '<a href="'
+                                                    + response.response.venue.url
+                                                    + '" >'
+                                                    + response.response.venue.url
+                                                    + '</a>';
           //  console.log(response);
 
          }
@@ -320,20 +332,6 @@ function getFSContent(fs_id) {
         console.log('failure');
     });
 
-    if (!response.response.venue.url){
-    response.response.venue.url = 'Data not available!';
-
-    }
-
-    // Store the relevant data in a array and return it//
-    if (response){
-    let venueArray = [response.response.venue.name,
-                    response.response.venue.location.formattedAddress,
-                   response.response.venue.url]
-    return venueArray;
-    } else {
-        return ['Error with FS','Error with FS', 'Error with FS']
-    }
 }
 
 function toggleBounce(marker) {
