@@ -13,7 +13,7 @@ let lastMarker;
 // define foursquare stuff
 let base_url = 'https://api.foursquare.com/v2/venues/';
 let client_id = 'client_id=X1SUCODMCGPQI40HJ3RPNRXGVJTWPBTRDKKDJKD3PAOHW2VH';
-let client_secret = 'client_secret=DM324VPQYSTRISJ2VXR0YN4HIHEUOCGKB14FJW0HOPZZLQ2N&';
+let client_secret = 'client_secret=DM324VPQYSTRISJ2VXR0YN4HIHEUOCGKB14FJW0HOPZZLQ2N';
 let version = 'v=20180907'
 
 
@@ -79,6 +79,10 @@ function initMap() {
 
 ko.applyBindings(new ViewModel());
 
+}
+
+function googleError(){
+    alert('Error while loading google API!');
 }
 
 
@@ -299,30 +303,36 @@ function getFSContent(fs_id) {
     var text;
     var response;
     var url = base_url + fs_id + '?' + client_id + '&' + client_secret + '&' + version;
-    var result;
+    var response;
 
     $.ajax({ type: "GET",
          url: url,
-         async: true,
+         async: false,
          dataType: 'json',
          success : function(text)
          {
-             response = text;
+            response = text;
+            console.log(response);
 
          }
     }).fail(function(errorText) {
-        alert('Foursquare data not available!');
-
+        alert('Foursquare data not available!')
+        console.log('failure');
     });
 
-    // Store the relevant data in a array and return it
-    if (result){
+    if (!response.response.venue.url){
+    response.response.venue.url = 'Data not available!';
+
+    }
+
+    // Store the relevant data in a array and return it//
+    if (response){
     let venueArray = [response.response.venue.name,
                     response.response.venue.location.formattedAddress,
-                    response.response.venue.url]
+                   response.response.venue.url]
     return venueArray;
     } else {
-        return ['N/A','N/A', 'N/A']
+        return ['Error with FS','Error with FS', 'Error with FS']
     }
 }
 
