@@ -312,7 +312,7 @@ function getFSContent(fs_id) {
          success : function(text)
          {
             response = text;
-            console.log(response);
+          //  console.log(response);
 
          }
     }).fail(function(errorText) {
